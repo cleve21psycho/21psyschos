@@ -1,14 +1,22 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { Button } from "$lib/components/ui/button/index.js";
 import ThemeSwitcher from "$lib/components/ThemeSwitcher.svelte";
+import Body from "src/components/body/Body.svelte";
 ---
 
 <Layout>
-  <div class="min-h-screen p-8">
-    <div class="flex justify-end mb-8">
+  <div class="min-h-screen p-8 flex items-center justify-center">
+    <main class="w-full max-w-5xl">
+      <Body client:load />
+    </main>
+
+    <div class="fixed bottom-4 right-4 z-50">
       <ThemeSwitcher client:load />
     </div>
-   
+
+    <div class="fixed bottom-4 left-4 z-50 flex items-center gap-10">
+      <img src="/Vector.svg" alt="Vector" class="h-10 w-auto" />
+      <img src="/ees-white.svg" alt="EES" class="h-10 w-auto" />
+    </div>
   </div>
 </Layout>
