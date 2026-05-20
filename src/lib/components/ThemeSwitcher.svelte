@@ -13,7 +13,7 @@
 >
   <div class="relative h-10 w-[194px]">
     <div
-      class="absolute top-[4px] left-[1px] h-full w-full bg-black blur-[2px] opacity-100"
+      class="absolute top-[4px] left-px h-full w-full bg-black blur-[2px] opacity-100"
       style="-webkit-mask: url('/21psychos.svg') no-repeat center / contain; mask: url('/21psychos.svg') no-repeat center / contain;"
     ></div>
 
