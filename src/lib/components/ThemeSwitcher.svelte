@@ -18,7 +18,7 @@
     ></div>
 
     <div
-      class="absolute inset-0 h-full w-full bg-primary"
+      class="absolute inset-0 h-full w-full bg-accent"
       style="-webkit-mask: url('/21psychos.svg') no-repeat center / contain; mask: url('/21psychos.svg') no-repeat center / contain;"
     ></div>
   </div>
