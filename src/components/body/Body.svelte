@@ -70,7 +70,7 @@
       {@const active = sections.find((s) => s.id === activeId)}
       {#if active}
         <p
-          class="text-lg md:text-xl text-foreground/90 leading-relaxed max-w-lg animate-in fade-in duration-300"
+          class="text-lg md:text-xl text-foreground/90 leading-[40px] max-w-lg animate-in fade-in duration-300"
         >
           {active.content}
         </p>
@@ -89,7 +89,10 @@
             ? 1
             : getOpacity(i) * 0.6};"
       >
-        {#if section.strikePrefix}<span class="text-muted-foreground line-through">{section.strikePrefix}</span>{" "}{/if}{section.heading}
+        {#if section.strikePrefix}<span
+            class="text-muted-foreground line-through"
+            >{section.strikePrefix}</span
+          >{" "}{/if}{section.heading}
       </button>
     {/each}
   </div>
