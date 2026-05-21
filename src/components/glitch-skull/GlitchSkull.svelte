@@ -1,5 +1,6 @@
 <script lang="ts">
   import { sectionStore } from "$lib/stores/section.svelte";
+  import { sections } from "$lib/data/sections";
 
   let { size = 340 }: { size?: number } = $props();
 
@@ -8,15 +9,35 @@
   function toggle() {
     unleashed = !unleashed;
   }
+
+  let activeSection = $derived(
+    sectionStore.activeId
+      ? sections.find((s) => s.id === sectionStore.activeId)
+      : null,
+  );
 </script>
 
-{#if !sectionStore.activeId}
-  <div class="cs-wrap" class:active={unleashed} style="--cs-size: {size}px;">
+<div
+  class="cs-wrap"
+  class:active={unleashed}
+  class:thinking={!!activeSection}
+  style="--cs-size: {size}px;"
+>
   <button class="cs-header" type="button" onclick={toggle}>
     <!-- <span class="cs-header-text" data-text={unleashed ? "AAARGH!!!" : "▸ TAP TO UNLEASH"}>
       {unleashed ? "AAARGH!!!" : "▸ TAP TO UNLEASH"}
     </span> -->
   </button>
+
+  {#if activeSection}
+    <div class="cs-thought" role="status" aria-live="polite">
+      <span class="cs-thought-dot cs-thought-dot-2" aria-hidden="true"></span>
+      <span class="cs-thought-dot cs-thought-dot-1" aria-hidden="true"></span>
+      <div class="cs-bubble">
+        <p class="cs-bubble-text">{activeSection.content}</p>
+      </div>
+    </div>
+  {/if}
 
   <button
     class="cs-skull"
@@ -161,8 +182,7 @@
       <span class="cs-spark cs-spark-6">#</span>
     </div>
   </button>
-  </div>
-{/if}
+</div>
 
 <style>
   .cs-wrap {
@@ -232,6 +252,82 @@
     clip-path: inset(55% 0 0 0);
     opacity: 1;
     animation: cs-glitch-b 0.32s steps(1, end) infinite;
+  }
+
+  /* ============ THOUGHT BUBBLE ============ */
+  .cs-thought {
+    position: absolute;
+    top: calc(100% + 1rem);
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.45rem;
+    pointer-events: none;
+    z-index: 5;
+  }
+
+  .cs-bubble {
+    position: relative;
+    background: var(--cs-bubble-bg, #fff);
+    color: #000;
+    border: 4px solid #000;
+    border-radius: 28px;
+    padding: 1.1rem 1.4rem;
+    width: clamp(18rem, calc(var(--cs-size) * 1.1), 26rem);
+    box-shadow: 6px 6px 0 #000;
+    transform-origin: top center;
+    animation: cs-bubble-pop 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  }
+
+  .cs-bubble-text {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.55;
+    font-weight: 600;
+  }
+
+  /* trailing little circles connecting bubble -> skull */
+  .cs-thought-dot {
+    display: block;
+    background: var(--cs-bubble-bg, #fff);
+    border: 3px solid #000;
+    border-radius: 50%;
+    transform-origin: center;
+    animation: cs-dot-pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  }
+
+  .cs-thought-dot-1 {
+    width: 1.25rem;
+    height: 1.25rem;
+    animation-delay: 0.06s;
+  }
+
+  .cs-thought-dot-2 {
+    width: 0.7rem;
+    height: 0.7rem;
+    animation-delay: 0.12s;
+  }
+
+  /* on small screens, drop the bubble into the normal flow below the skull
+     so it doesn't clip off the bottom of the viewport or overlap the menu */
+  @media (max-width: 767px) {
+    .cs-thought {
+      position: static;
+      transform: none;
+      order: 1;
+      margin-top: 0.5rem;
+    }
+
+    .cs-bubble {
+      width: min(20rem, 88vw);
+    }
+  }
+
+  /* idle "thinking" sway when a section is selected */
+  .cs-wrap.thinking:not(.active) .cs-svg {
+    animation: cs-think 2.4s ease-in-out infinite;
   }
 
   /* ============ SKULL BUTTON ============ */
@@ -383,6 +479,11 @@
     50% { transform: translateY(-8px) scale(1.015, 0.985); }
   }
 
+  @keyframes cs-think {
+    0%, 100% { transform: translateY(0) rotate(-2deg); }
+    50%      { transform: translateY(-6px) rotate(2deg); }
+  }
+
   @keyframes cs-shake {
     0%   { transform: translate(0, 0)   rotate(0)   scale(1);    }
     20%  { transform: translate(-4px, 3px) rotate(-3deg) scale(1.03); }
@@ -425,6 +526,17 @@
     }
   }
 
+  @keyframes cs-bubble-pop {
+    0%   { opacity: 0; transform: scale(0.4) translateY(-20px); }
+    70%  { opacity: 1; transform: scale(1.04) translateY(4px); }
+    100% { opacity: 1; transform: scale(1) translateY(0); }
+  }
+
+  @keyframes cs-dot-pop {
+    0%   { opacity: 0; transform: scale(0); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+
   @keyframes cs-text-shake {
     0%, 100% { transform: translate(0, 0); }
     33%      { transform: translate(-2px, 1px); }
@@ -454,7 +566,9 @@
     .cs-spark,
     .cs-header-text,
     .cs-header-text::before,
-    .cs-header-text::after {
+    .cs-header-text::after,
+    .cs-bubble,
+    .cs-thought-dot {
       animation: none !important;
     }
   }
