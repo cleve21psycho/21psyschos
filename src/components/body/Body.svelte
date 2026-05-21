@@ -57,9 +57,11 @@
   function selectSection(id: string) {
     activeId = activeId === id ? null : id;
 
-
     if (activeId && window.innerWidth < 768) {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      // Use setTimeout to ensure the DOM has updated before scrolling
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }, 0);
     }
   }
 
