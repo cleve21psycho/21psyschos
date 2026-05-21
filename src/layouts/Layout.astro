@@ -11,16 +11,12 @@ import "../styles/global.css";
     <link rel="icon" href="/favicon.ico" />
     <meta name="theme-color" content="#44ACFF" />
     <meta name="generator" content={Astro.generator} />
-    <title>Astro Basics</title>
+    <title>21psychos</title>
     <script is:inline>
-      // Initialize theme before page renders to prevent flash
-      (function() {
-        const stored = localStorage.getItem('theme');
-        const theme = stored || 'light';
+      (function () {
+        const stored = localStorage.getItem("theme");
+        const theme = stored || "light";
         document.documentElement.classList.add(theme);
-        var colors = { light: '#44ACFF', red: '#D92243', neon: '#1a0533' };
-        var meta = document.querySelector('meta[name="theme-color"]');
-        if (meta) meta.content = colors[theme] || colors.light;
       })();
     </script>
   </head>
