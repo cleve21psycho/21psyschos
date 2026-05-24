@@ -15,8 +15,8 @@ export interface Props {
 }
 
 const {
-  title = "21psychos — modern tech, built different",
-  description = "21psychos is a crew of misfits building modern software. No suits, no buzzwords — just raw energy and tech that ships.",
+  title = "21psychos — software studio in Cape Town",
+  description = "21psychos is a Cape Town software studio building modern web, mobile, and AI products. No suits, no buzzwords — just raw engineering that ships.",
   image = "/21psychos.svg",
   canonical,
   ogType = "website",
@@ -27,13 +27,47 @@ const siteUrl = Astro.site ?? new URL("https://21psychos.com");
 const canonicalURL = new URL(canonical ?? Astro.url.pathname, siteUrl);
 const ogImageURL = new URL(image, siteUrl);
 
+// Cape Town, South Africa
+const geo = {
+  region: "ZA-WC",
+  placename: "Cape Town",
+  position: "-33.9249;18.4241",
+  icbm: "-33.9249, 18.4241",
+};
+
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "Organization",
+  "@type": ["Organization", "LocalBusiness"],
   name: "21psychos",
   url: siteUrl.toString(),
   logo: new URL("/21psychos.svg", siteUrl).toString(),
+  image: ogImageURL.toString(),
   description,
+  areaServed: [
+    { "@type": "City", name: "Cape Town" },
+    { "@type": "AdministrativeArea", name: "Western Cape" },
+    { "@type": "Country", name: "South Africa" },
+    { "@type": "Place", name: "Worldwide" },
+  ],
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Cape Town",
+    addressRegion: "Western Cape",
+    addressCountry: "ZA",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: -33.9249,
+    longitude: 18.4241,
+  },
+  knowsAbout: [
+    "Software development",
+    "Web development",
+    "Mobile app development",
+    "AI",
+    "Product engineering",
+    "Cape Town tech",
+  ],
   sameAs: [],
 };
 ---
@@ -51,13 +85,20 @@ const jsonLd = {
     <meta name="description" content={description} />
     <meta
       name="keywords"
-      content="21psychos, software studio, modern tech, web development, creative engineering, AI, indie tech"
+      content="21psychos, Cape Town software, Cape Town software development, Cape Town developers, Cape Town web development, Cape Town tech, software studio Cape Town, South Africa software, modern tech, AI, indie tech"
     />
     <meta name="author" content="21psychos" />
     <meta
       name="robots"
       content={noindex ? "noindex, nofollow" : "index, follow"}
     />
+
+    <!-- Geo targeting -->
+    <meta name="geo.region" content={geo.region} />
+    <meta name="geo.placename" content={geo.placename} />
+    <meta name="geo.position" content={geo.position} />
+    <meta name="ICBM" content={geo.icbm} />
+
     <link rel="canonical" href={canonicalURL.toString()} />
 
     <!-- Icons -->
@@ -77,7 +118,7 @@ const jsonLd = {
     <meta property="og:url" content={canonicalURL.toString()} />
     <meta property="og:image" content={ogImageURL.toString()} />
     <meta property="og:image:alt" content={title} />
-    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale" content="en_ZA" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
