@@ -16,7 +16,7 @@
         <img src="/Vector.svg" alt="Supa Tail" class="h-6 w-auto" />
         <span>Supa Tail</span>
       </a>
-      <a
+      <!-- <a
         href="https://eliteentrepreneurschool.co.za"
         target="_blank"
         rel="noopener noreferrer"
@@ -24,7 +24,7 @@
       >
         <img src="/ees-white.svg" alt="EES" class="h-6 w-auto" />
         <span>Elite Entrepreneur School</span>
-      </a>
+      </a> -->
     </Popover.Content>
   </Popover.Root>
 </div>
@@ -46,7 +46,7 @@
       </Tooltip.Content>
     </Tooltip.Root>
 
-    <Tooltip.Root>
+    <!-- <Tooltip.Root>
       <Tooltip.Trigger asChild>
         <a
           href="https://eliteentrepreneurschool.co.za"
@@ -59,6 +59,6 @@
       <Tooltip.Content>
         <p>Elite Entrepreneur School</p>
       </Tooltip.Content>
-    </Tooltip.Root>
+    </Tooltip.Root> -->
   </Tooltip.Provider>
 </div>
