@@ -1,13 +1,43 @@
 <script lang="ts">
   import { sectionStore } from "$lib/stores/section.svelte";
   import { sections } from "$lib/data/sections";
+  import Button from "$lib/components/ui/button/button.svelte";
 
   let { size = 340 }: { size?: number } = $props();
 
+  const CONTACT_EMAIL = "admin@21psychos.com";
+
   let unleashed = $state(false);
+  let copied = $state(false);
+  let copyTimeout: ReturnType<typeof setTimeout> | null = null;
 
   function toggle() {
     unleashed = !unleashed;
+  }
+
+  async function copyEmail() {
+    try {
+      if (typeof navigator !== "undefined" && navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(CONTACT_EMAIL);
+      } else if (typeof document !== "undefined") {
+        const textarea = document.createElement("textarea");
+        textarea.value = CONTACT_EMAIL;
+        textarea.setAttribute("readonly", "");
+        textarea.style.position = "absolute";
+        textarea.style.left = "-9999px";
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textarea);
+      }
+      copied = true;
+      if (copyTimeout) clearTimeout(copyTimeout);
+      copyTimeout = setTimeout(() => {
+        copied = false;
+      }, 1800);
+    } catch (err) {
+      console.error("Failed to copy email:", err);
+    }
   }
 
   let activeSection = $derived(
@@ -35,6 +65,11 @@
       <span class="cs-thought-dot cs-thought-dot-1" aria-hidden="true"></span>
       <div class="cs-bubble">
         <p class="cs-bubble-text">{activeSection.content}</p>
+        {#if activeSection.id === 'get-in-touch'}
+          <Button class='cursor-pointer' onclick={copyEmail} aria-label="Copy email address">
+            {copied ? "Copied!" : CONTACT_EMAIL}
+          </Button>
+        {/if}
       </div>
     </div>
   {/if}
@@ -279,6 +314,7 @@
     box-shadow: 6px 6px 0 #000;
     transform-origin: top center;
     animation: cs-bubble-pop 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    pointer-events: auto;
   }
 
   .cs-bubble-text {
