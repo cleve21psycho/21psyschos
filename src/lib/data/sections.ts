@@ -11,13 +11,13 @@ export const sections: Section[] = [
     strikePrefix: "startup corporate",
     heading: "stayup",
     content:
-      "We're not your typical corporate entity. We started as a group of misfits who refused to play by the rules. No suits, no boardrooms, no buzzword bingo. Just raw energy and a relentless drive to build things that matter.",
+      "We're not your typical corporate entity. We started as a group of misfits who refused to play by the rules. No suits, no boardrooms. Just raw energy and a relentless drive to build things that matter.",
   },
   {
     id: "modern-tech",
     heading: "modern tech",
     content:
-      "We use whatever works. No loyalty to frameworks, no religious wars over languages. If it ships fast and doesn't break, it's in. Our stack evolves every week because stagnation is death.",
+      "We stick with fast, modern frameworks. The kind with active communities, sharp tooling, and a track record of shipping. No legacy baggage, no fads. Just proven tech that keeps us building at full speed.",
   },
   {
     id: "different",
@@ -35,7 +35,7 @@ export const sections: Section[] = [
     id: "about-ai",
     heading: "about ai...",
     content:
-      "AI is a tool, not a personality. We use it where it makes sense and ignore it where it doesn't. We're not replacing humans — we're amplifying them. The soul of the work stays human.",
+      "AI is a tool, not a personality. We use it where it makes sense and ignore it where it doesn't. We're not replacing humans — we're amplifying them. The soul of the work stays human.♥️",
   },
   {
     id: "know-no",
@@ -47,13 +47,12 @@ export const sections: Section[] = [
     id: "why-the-name",
     heading: "why the name",
     content:
-      "Because you have to be a little crazy to do what we do. 21 people who think differently, act differently, and build differently. Psychos in the best possible way.",
+      "The name pulls from cyberpunk: neon-soaked grit, rebel hackers, and a future built by outsiders. The 21 is personal. It's the birthday of someone special to us, quietly stitched into everything we make.",
   },
   {
     id: "get-in-touch",
     heading: "get in touch",
     content:
       "If you're ready to build something that matters, something that breaks the mold, something that makes people stop and stare — we want to hear from you. No fluff, no nonsense. Just real talk.",
-  }
-  
+  },
 ];
