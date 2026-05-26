@@ -7,23 +7,22 @@ export type Section = {
 
 export const sections: Section[] = [
   {
-    id: "startup",
-    strikePrefix: "startup corporate",
-    heading: "stayup",
+    id: "different",
+    heading: "errr we're just different",
     content:
-      "We're not your typical corporate entity. We started as a group of misfits who refused to play by the rules. No suits, no boardrooms, no buzzword bingo. Just raw energy and a relentless drive to build things that matter.",
+      "We don't fit into a box and we stopped trying. We're not an agency, not a studio, not a consultancy. We're 21psychos who happen to make incredible things together.",
+  },
+  {
+    id: "what-we-do",
+    heading: "what we do?",
+    content:
+      "At our core, we're a software company. We build private projects for clients who need something done right, from web platforms to bespoke tools. Alongside the client work, we ship our own apps too. Ideas we believe in, built on our own terms.(check the bottom left)",
   },
   {
     id: "modern-tech",
     heading: "modern tech",
     content:
-      "We use whatever works. No loyalty to frameworks, no religious wars over languages. If it ships fast and doesn't break, it's in. Our stack evolves every week because stagnation is death.",
-  },
-  {
-    id: "different",
-    heading: "errr no, we're just different",
-    content:
-      "We don't fit into a box and we stopped trying. We're not an agency, not a studio, not a consultancy. We're 21psychos who happen to make incredible things together.",
+      "We stick with fast, modern frameworks. The kind with active communities, sharp tooling, and a track record of shipping. No legacy baggage, no fads. Just proven tech that keeps us building at full speed.",
   },
   {
     id: "25-hours",
@@ -35,7 +34,7 @@ export const sections: Section[] = [
     id: "about-ai",
     heading: "about ai...",
     content:
-      "AI is a tool, not a personality. We use it where it makes sense and ignore it where it doesn't. We're not replacing humans — we're amplifying them. The soul of the work stays human.",
+      "AI is a tool, not a personality. We use it where it makes sense and ignore it where it doesn't. We're not replacing humans — we're amplifying them. The soul of the work stays human.♥️",
   },
   {
     id: "know-no",
@@ -47,13 +46,12 @@ export const sections: Section[] = [
     id: "why-the-name",
     heading: "why the name",
     content:
-      "Because you have to be a little crazy to do what we do. 21 people who think differently, act differently, and build differently. Psychos in the best possible way.",
+      "The name pulls from cyberpunk: neon-soaked grit, rebel hackers, and a future built by outsiders. The 21 is personal. It's the birthday of someone special to us, quietly stitched into everything we make.",
   },
   {
     id: "get-in-touch",
     heading: "get in touch",
     content:
       "If you're ready to build something that matters, something that breaks the mold, something that makes people stop and stare — we want to hear from you. No fluff, no nonsense. Just real talk.",
-  }
-  
+  },
 ];
