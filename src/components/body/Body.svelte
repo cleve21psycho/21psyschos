@@ -39,10 +39,13 @@
             ? 1
             : getOpacity(i) * 0.6};"
       >
-        {#if section.strikePrefix}<span
-            class="text-muted line-through"
+        {#if section.strikePrefix}<span class="text-muted line-through"
             >{section.strikePrefix}</span
           >{" "}{/if}{section.heading}
+
+        {#if section.id === "get-in-touch"}
+          <span>📬</span>
+        {/if}
       </button>
     {/each}
   </div>
