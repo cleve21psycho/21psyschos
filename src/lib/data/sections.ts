@@ -7,23 +7,22 @@ export type Section = {
 
 export const sections: Section[] = [
   {
-    id: "startup",
-    strikePrefix: "startup corporate",
-    heading: "stayup",
+    id: "different",
+    heading: "errr we're just different",
     content:
-      "We're not your typical corporate entity. We started as a group of misfits who refused to play by the rules. No suits, no boardrooms. Just raw energy and a relentless drive to build things that matter.",
+      "We don't fit into a box and we stopped trying. We're not an agency, not a studio, not a consultancy. We're 21psychos who happen to make incredible things together.",
+  },
+  {
+    id: "what-we-do",
+    heading: "what we do?",
+    content:
+      "At our core, we're a software company. We build private projects for clients who need something done right, from web platforms to bespoke tools. Alongside the client work, we ship our own apps too. Ideas we believe in, built on our own terms.(check the bottom left)",
   },
   {
     id: "modern-tech",
     heading: "modern tech",
     content:
       "We stick with fast, modern frameworks. The kind with active communities, sharp tooling, and a track record of shipping. No legacy baggage, no fads. Just proven tech that keeps us building at full speed.",
-  },
-  {
-    id: "different",
-    heading: "errr no, we're just different",
-    content:
-      "We don't fit into a box and we stopped trying. We're not an agency, not a studio, not a consultancy. We're 21psychos who happen to make incredible things together.",
   },
   {
     id: "25-hours",
